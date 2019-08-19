@@ -37,6 +37,8 @@ func GetConn() *gorm.DB {
 	}
 	log.Println("Succesfully connected to the db")
 
+	db.AutoMigrate(&dbModel.User{})
+
 	// close connection after the call to the database connection
 	// defer db.Close()
 

@@ -15,7 +15,15 @@ func SignUp(w http.ResponseWriter, r *http.Request) {
 	var user db.User
 	err := json.NewDecoder(r.Body).Decode(&user)
 	if err != nil {
-		log.Println("could not decode")
+		log.Println(user)
+		response := app.UserResponse {
+			Status: 200,
+			Message: err.Error(),
+	
+			}
+		w.Header().Add("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(response)
+		log.Println(err.Error())	
 	}
 	err = userModel.SignUp(user)
 	if err != nil {
