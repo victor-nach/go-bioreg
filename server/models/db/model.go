@@ -14,6 +14,6 @@ type User struct {
 	FingerPrintToSend 		string		`json:"fingerPrintToSend,omitempty"`
 	FingerPosition 			string		`json:"fingerPosition,omitempty"`
 	Gender 					string		`json:"gender,omitempty"`
-	DateCreated 			time.Time	`json:"dateCreated,omitempty"`
-	DateMoved 				time.Time	`json:"dateMoved,omitempty"`
+	DateCreated 			string		`json:"dateCreated,omitempty"`
+	DateMoved 				time.Time	`json:"dateMoved,omitempty" gorm:"default:CURRENT_TIMESTAMP" sql:"default:CURRENT_TIMESTAMP"`
 }
